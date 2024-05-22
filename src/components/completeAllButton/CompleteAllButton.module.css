@@ -1,0 +1,23 @@
+.button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 24px;
+  height: 100%;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: #d5ffff92;
+  padding-left: 4px;
+}
+
+.icon:hover {
+  fill: rgba(255, 255, 114, 0.721);
+}
+
+.button .iconOnAllDone {
+  fill: #5dff5d;
+}

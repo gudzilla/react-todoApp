@@ -1,0 +1,22 @@
+.todoFooter {
+  padding: 6px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  font-size: 14px;
+}
+
+.item:first-child {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.item:last-child {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}

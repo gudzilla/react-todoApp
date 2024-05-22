@@ -1,0 +1,20 @@
+.todoSection {
+  width: 480px;
+  background-color: #25523b;
+  border-radius: 4px;
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainHeader {
+  font-size: 40px;
+  font-weight: 500;
+  padding: 12px 0;
+  align-self: center;
+}
+
+.todoList {
+  background-color: #416f57;
+  border-radius: 2px;
+}
