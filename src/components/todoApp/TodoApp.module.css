@@ -18,3 +18,27 @@
   background-color: #416f57;
   border-radius: 2px;
 }
+
+.button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 24px;
+  height: 100%;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: #9c9c9c;
+  padding-left: 4px;
+}
+
+.icon:hover {
+  fill: rgb(37, 37, 37);
+}
+
+.button .iconOnAllDone {
+  fill: #00ac00;
+}

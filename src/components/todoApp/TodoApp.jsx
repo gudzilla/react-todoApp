@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import styles from "./TodoApp.module.css";
+import cx from "classnames";
+import CompleteIcon from "../../assets/icons/CompleteIcon2.svg?react";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import { AddTodoForm } from "../addTodoForm";
 import { TodoList } from "../todoList";
 import { TodoFooter } from "../todoFooter";
 import { TODOLIST_DATA } from "../../constants/data";
+import { FILTERS } from "../../constants/filters";
 
 export function TodoApp() {
   const [todoList, setTodoList] = useState(TODOLIST_DATA);
@@ -12,6 +15,8 @@ export function TodoApp() {
   const undoneItemsCount = todoList.filter((item) => !item.isDone).length;
   const hasItems = todoList.length > 0;
   const isListCompleted = todoList.every((item) => item.isDone);
+
+  let renderList = todoList.filter(FILTERS[todoListFilter]);
 
   function handleCheckItem(id) {
     const newList = todoList.map((item) => {
@@ -73,8 +78,17 @@ export function TodoApp() {
     setTodoList(newList);
   }
 
+  function CompleteAllButton({ onClick, isListDone }) {
+    return (
+      <button className={styles.button} onClick={onClick}>
+        <CompleteIcon className={cx(styles.icon, { [styles.iconOnAllDone]: isListDone })} />
+      </button>
+    );
+  }
+
   return (
     <section className={styles.todoSection}>
+      <div></div>
       <h1 className={styles.mainHeader}>todos:</h1>
       <div className={styles.todoList}>
         <AddTodoForm
@@ -82,12 +96,14 @@ export function TodoApp() {
           onAllDoneOrUndone={handleCheckAllOrUncheckAll}
           isListDone={isListCompleted}
           hasItems={hasItems}
+          completeButtonNode={
+            <CompleteAllButton onClick={handleCheckAllOrUncheckAll} isListDone={isListCompleted} />
+          }
         />
         <TodoList
-          todoList={todoList}
+          list={renderList}
           onToggle={handleCheckItem}
           onRemove={handleRemoveItem}
-          todoListFilter={todoListFilter}
           onNameChange={handleItemNameChange}
         />
         {hasItems && (
