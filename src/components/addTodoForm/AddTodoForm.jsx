@@ -1,31 +1,35 @@
 import styles from "./AddTodoForm.module.css";
-import { useState } from "react";
-import { CompleteAllButton } from "../completeAllButton";
+import { useState, useRef, useEffect } from "react";
 
-export function AddTodoForm({ onSubmit, onAllDoneOrUndone, isListDone, hasItems }) {
-  const [newTodoInput, setNewTodoInput] = useState("");
+export function AddTodoForm({ onSubmit, hasItems, completeButtonNode }) {
+  const [newTodoValue, setNewTodoValue] = useState("");
+  const newTodoInput = useRef(null);
 
   function handleKeyDown(e) {
     if (e.key === "Enter" && e.target.value.trim().length > 1) {
-      console.log(e.target.value.trim().length);
-      onSubmit(newTodoInput.trim());
-      setNewTodoInput("");
+      onSubmit(newTodoValue.trim());
+      setNewTodoValue("");
     }
   }
 
+  useEffect(() => {
+    newTodoInput.current.focus();
+  }, []);
+
   return (
-    <div className={styles.form}>
-      {hasItems && <CompleteAllButton onClick={onAllDoneOrUndone} isListDone={isListDone} />}
+    <div className={styles.newTodo}>
       <input
+        ref={newTodoInput}
         type="text"
         placeholder="What needs to be done?"
         className={styles.inputNewTodo}
-        value={newTodoInput}
+        value={newTodoValue}
         onChange={(e) => {
-          setNewTodoInput(e.target.value);
+          setNewTodoValue(e.target.value);
         }}
         onKeyDown={handleKeyDown}
       />
+      {hasItems && completeButtonNode}
     </div>
   );
 }

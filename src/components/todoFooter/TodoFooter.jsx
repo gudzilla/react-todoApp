@@ -6,10 +6,10 @@ import { TodoClearButton } from "../todoClearButton";
 
 export function TodoFooter({ undoneCounter, onClearCompleted, todoList, filter, setFilter }) {
   return (
-    <div className={styles.todoFooter}>
+    <footer className={styles.todoFooter}>
       <TodoItemsLeft undoneCounter={undoneCounter} className={styles.item} />
       <TodoFilters filter={filter} setFilter={setFilter} className={styles.item} />
       <TodoClearButton onClearCompleted={onClearCompleted} className={styles.item} />
-    </div>
+    </footer>
   );
 }

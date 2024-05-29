@@ -1,20 +1,48 @@
 .todoSection {
-  width: 480px;
-  background-color: #25523b;
+  padding-top: 20px;
+  width: 100%;
   border-radius: 4px;
-  padding: 0 20px 20px 20px;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 40px;
+  position: relative;
 }
 
-.mainHeader {
-  font-size: 40px;
-  font-weight: 500;
+.todoHeader {
+  color: #b83f45;
+  font-size: 78px;
+  font-weight: 300;
   padding: 12px 0;
   align-self: center;
 }
 
-.todoList {
-  background-color: #416f57;
-  border-radius: 2px;
+.todo {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+:focus {
+  box-shadow: 0 0 2px 2px var(--color-pale-red);
+  outline: 0;
+}
+
+.completeButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 46px;
+  height: 100%;
+  color: var(--color-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.completeButtonIcon {
+  display: inline-block;
+  font-size: 22px;
+  transform: rotate(90deg);
+}
+
+.onAllDone {
+  color: #444;
 }
