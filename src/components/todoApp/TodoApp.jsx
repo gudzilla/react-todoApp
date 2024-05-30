@@ -11,23 +11,22 @@ import { CompleteAllButton } from "../completeAllButton";
 
 export function TodoApp() {
   const [todoList, setTodoList] = useState(TODOLIST_DATA);
-  const [todoListFilter, setTodoListFilter] = useState("all");
+  const [todoListFilter, setTodoListFilter] = useState(FILTERS.all);
   const undoneItemsCount = todoList.filter((item) => !item.isDone).length;
   const hasItems = todoList.length > 0;
-  const isListCompleted = todoList.every((item) => item.isDone);
+  const isListCompleted = todoList.every(FILTERS.completed.fn);
 
-  let renderList = todoList.filter(FILTERS[todoListFilter]);
+  let renderList = todoList.filter(todoListFilter.fn);
 
   function handleCheckItem(id) {
     const newList = todoList.map((item) => {
       if (item.id !== id) {
         return item;
-      } else {
-        return {
-          ...item,
-          isDone: !item.isDone,
-        };
       }
+      return {
+        ...item,
+        isDone: !item.isDone,
+      };
     });
 
     setTodoList(newList);
@@ -84,8 +83,6 @@ export function TodoApp() {
       <div className={styles.todoList}>
         <AddTodoForm
           onSubmit={handleAddNewTodo}
-          onAllDoneOrUndone={handleCheckAllOrUncheckAll}
-          isListDone={isListCompleted}
           hasItems={hasItems}
           completeButtonNode={
             <CompleteAllButton onClick={handleCheckAllOrUncheckAll} isListDone={isListCompleted} />

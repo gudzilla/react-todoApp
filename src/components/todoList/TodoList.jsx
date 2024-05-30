@@ -1,7 +1,7 @@
 import styles from "./TodoList.module.css";
 import cx from "classnames";
 import RemoveIcon2 from "../../assets/RemoveIcon2.svg?react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ItemEditMode } from "../itemEditMode";
 
 export function TodoList({ list, onToggle, onRemove, onNameChange }) {
