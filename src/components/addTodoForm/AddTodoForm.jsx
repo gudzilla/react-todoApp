@@ -1,5 +1,5 @@
 import styles from "./AddTodoForm.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 export function AddTodoForm({ onSubmit, hasItems, completeButtonNode }) {
   const [newTodoValue, setNewTodoValue] = useState("");
@@ -12,13 +12,10 @@ export function AddTodoForm({ onSubmit, hasItems, completeButtonNode }) {
     }
   }
 
-  useEffect(() => {
-    newTodoInput.current.focus();
-  }, []);
-
   return (
     <div className={styles.newTodo}>
       <input
+        autoFocus={true}
         ref={newTodoInput}
         type="text"
         placeholder="What needs to be done?"
