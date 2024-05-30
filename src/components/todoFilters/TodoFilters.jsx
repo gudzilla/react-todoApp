@@ -9,8 +9,6 @@ export function TodoFilters({ filter, setFilter, className }) {
       <button
         className={cx(styles.filter, { [styles.filterSelected]: filter.id === FILTERS.all.id })}
         onClick={() => {
-          console.log("FILTERS.all.id = ", FILTERS.all.id);
-          console.log("FILTERS.all.fn = ", FILTERS.all.fn);
           setFilter(FILTERS.all);
         }}
       >
