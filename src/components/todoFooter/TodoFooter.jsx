@@ -8,7 +8,11 @@ export function TodoFooter({ undoneCounter, onClearCompleted, todoList, filter, 
   return (
     <footer className={styles.todoFooter}>
       <TodoItemsLeft undoneCounter={undoneCounter} className={styles.item} />
-      <TodoFilters filter={filter} setFilter={setFilter} className={styles.item} />
+      <TodoFilters
+        filter={filter}
+        setFilter={setFilter}
+        className={cx(styles.item, styles.filters)}
+      />
       <TodoClearButton onClearCompleted={onClearCompleted} className={styles.item} />
     </footer>
   );

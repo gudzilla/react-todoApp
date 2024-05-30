@@ -43,3 +43,24 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media (max-width: 469px) {
+  .todoFooter {
+    height: 76px;
+    flex-wrap: wrap;
+  }
+  .item {
+    min-width: 80px;
+    padding: 4px 0;
+  }
+  .filters {
+    order: 3;
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 341px) and (max-width: 469px) {
+  .item {
+    min-width: 140px;
+  }
+}
