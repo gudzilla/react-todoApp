@@ -15,6 +15,7 @@ export function AddTodoForm({ onSubmit, hasItems, completeButtonNode }) {
     <div className={styles.form}>
       {hasItems && completeButtonNode}
       <input
+        autoFocus={true}
         type="text"
         placeholder="What needs to be done?"
         className={styles.inputNewTodo}
