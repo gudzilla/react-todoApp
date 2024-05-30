@@ -6,9 +6,9 @@ Users have the ability to add, edit and remove their todos. Mark them as done. F
 
 My goal was to use React framework and its tools to create an app to help myself and others to be more productive.
 
-<img width='500' alt='todo-app-preview' src='https://github.com/gudzilla/react-todoApp/blob/main/src/assets/todo-app-preview1.png'>
+<img width='500' alt='todo-app-preview' src='./src/assets/todo-app-preview1.png'>
 
-<img width='500' alt='todo-app-preview' src='https://github.com/gudzilla/react-todoApp/blob/main/src/assets/todo-app-preview2.png'>
+<img width='500' alt='todo-app-preview' src='./src/assets/todo-app-preview2.png'>
 
 ## Stack
 
