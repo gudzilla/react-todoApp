@@ -3,16 +3,13 @@ const filterActive = (item) => !item.isDone;
 const filterCompleted = (item) => item.isDone;
 
 export const FILTERS = {
-  all: {
-    id: "all",
-    fn: filterAll,
-  },
-  active: {
-    id: "active",
-    fn: filterActive,
-  },
-  completed: {
-    id: "completed",
-    fn: filterCompleted,
-  },
+  all: "all",
+  active: "active",
+  completed: "completed",
+};
+
+export const FILTERS_PREDICATE = {
+  [FILTERS.all]: filterAll,
+  [FILTERS.active]: filterActive,
+  [FILTERS.completed]: filterCompleted,
 };

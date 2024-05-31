@@ -6,17 +6,17 @@ import { AddTodoForm } from "../addTodoForm";
 import { TodoList } from "../todoList";
 import { TodoFooter } from "../todoFooter";
 import { TODOLIST_DATA } from "../../constants/data";
-import { FILTERS } from "../../constants/filters";
+import { FILTERS, FILTERS_PREDICATE } from "../../constants/filters";
 import { CompleteAllButton } from "../completeAllButton";
 
 export function TodoApp() {
   const [todoList, setTodoList] = useState(TODOLIST_DATA);
   const [todoListFilter, setTodoListFilter] = useState(FILTERS.all);
-  const undoneItemsCount = todoList.filter((item) => !item.isDone).length;
+  const undoneItemsCount = todoList.filter(FILTERS_PREDICATE[FILTERS.active]).length;
   const hasItems = todoList.length > 0;
-  const isListCompleted = todoList.every(FILTERS.completed.fn);
+  const isListCompleted = todoList.every(FILTERS_PREDICATE[FILTERS.completed]);
 
-  let renderList = todoList.filter(todoListFilter.fn);
+  let renderList = todoList.filter(FILTERS_PREDICATE[todoListFilter]);
 
   function handleCheckItem(id) {
     const newList = todoList.map((item) => {
