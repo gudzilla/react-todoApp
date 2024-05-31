@@ -1,49 +1,25 @@
 import { useRef, useEffect } from "react";
 import styles from "./ItemEditMode.module.css";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
-export function ItemEditMode({
-  item,
-  newTodoName,
-  onChange,
-  editModeId,
-  onCancelChange,
-  onAcceptChange,
-}) {
-  const wrapperDivRef = useRef(null);
+export function ItemEditMode({ value, onChange, onKeyDown, onCancel }) {
   const inputRef = useRef(null);
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter" && e.target.value.trim().length > 1) {
-      onAcceptChange(item.id, e.target.value.trim());
-    } else if (e.key === "Escape" || e.keyCode === 27) {
-      onCancelChange();
-    }
-  }
+  useClickOutside(inputRef, onCancel);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (wrapperDivRef.current && !wrapperDivRef.current.contains(event.target)) {
-        onCancelChange();
-      }
-    };
-
     inputRef.current.focus();
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
   }, []);
 
   return (
-    <div ref={wrapperDivRef} className={styles.itemEdit}>
+    <div className={styles.itemEdit}>
       <input
         ref={inputRef}
         type="text"
-        value={newTodoName === "original" ? item.name : newTodoName}
+        value={value}
         className={styles.itemEditInput}
         onChange={onChange}
-        onKeyDown={handleKeyDown}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

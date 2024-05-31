@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.item__checkbox {
+.itemCheckbox {
   width: 18px;
   height: 18px;
   position: absolute;
@@ -27,7 +27,7 @@
   text-align: left;
 }
 
-ul {
+.ul {
   list-style-type: none;
 }
 
