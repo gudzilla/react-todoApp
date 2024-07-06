@@ -1,11 +1,8 @@
-.filtersContent {
-  display: flex;
-}
-
 .filter {
   margin-right: 8px;
   padding: 2px 4px;
   border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .filter:last-child {
@@ -13,7 +10,7 @@
 }
 
 .filter:hover {
-  border: 1px solid #ce4646d2;
+  border: 1px solid #ce4646;
   border-radius: 4px;
 }
 

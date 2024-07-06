@@ -9,7 +9,7 @@ export function TodoFilters({ filter, setFilter, className }) {
       <button
         className={cx(styles.filter, { [styles.filterSelected]: filter === FILTERS.all })}
         onClick={() => {
-          setFilter(FILTERS.all);
+          setFilter("all");
         }}
       >
         All
@@ -17,7 +17,7 @@ export function TodoFilters({ filter, setFilter, className }) {
       <button
         className={cx(styles.filter, { [styles.filterSelected]: filter === FILTERS.active })}
         onClick={() => {
-          setFilter(FILTERS.active);
+          setFilter("active");
         }}
       >
         Active
@@ -27,7 +27,7 @@ export function TodoFilters({ filter, setFilter, className }) {
           [styles.filterSelected]: filter === FILTERS.completed,
         })}
         onClick={() => {
-          setFilter(FILTERS.completed);
+          setFilter("completed");
         }}
       >
         Completed

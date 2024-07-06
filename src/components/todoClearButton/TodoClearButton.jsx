@@ -3,8 +3,10 @@ import cx from "classnames";
 
 export function TodoClearButton({ onClearCompleted, className }) {
   return (
-    <button className={cx(styles.clearCompletedButton, className)} onClick={onClearCompleted}>
-      Clear Completed
-    </button>
+    <div className={className}>
+      <button className={cx(styles.clearCompletedButton)} onClick={onClearCompleted}>
+        Clear Completed
+      </button>
+    </div>
   );
 }

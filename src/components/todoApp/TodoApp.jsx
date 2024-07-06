@@ -5,12 +5,10 @@ import { useState } from "react";
 import { AddTodoForm } from "../addTodoForm";
 import { TodoList } from "../todoList";
 import { TodoFooter } from "../todoFooter";
-import { TODOLIST_DATA } from "../../constants/data";
 import { FILTERS, FILTERS_PREDICATE } from "../../constants/filters";
-import { CompleteAllButton } from "../completeAllButton";
 
 export function TodoApp() {
-  const [todoList, setTodoList] = useState(TODOLIST_DATA);
+  const [todoList, setTodoList] = useState([]);
   const [todoListFilter, setTodoListFilter] = useState(FILTERS.all);
   const undoneItemsCount = todoList.filter(FILTERS_PREDICATE[FILTERS.active]).length;
   const hasItems = todoList.length > 0;
@@ -77,15 +75,29 @@ export function TodoApp() {
     setTodoList(newList);
   }
 
+  function CompleteAllButton({ onClick, isListDone }) {
+    return (
+      <button
+        className={cx(styles.completeButton, { [styles.onAllDone]: isListDone })}
+        onClick={onClick}
+      >
+        <span className={styles.completeButtonIcon}>❯</span>
+      </button>
+    );
+  }
+
   return (
     <section className={styles.todoSection}>
-      <h1 className={styles.mainHeader}>todos:</h1>
-      <div className={styles.todoList}>
+      <h1 className={styles.todoHeader}>todos:</h1>
+      <div className={styles.todo}>
         <AddTodoForm
           onSubmit={handleAddNewTodo}
           hasItems={hasItems}
           completeButtonNode={
-            <CompleteAllButton onClick={handleCheckAllOrUncheckAll} isListDone={isListCompleted} />
+            <CompleteAllButton
+              onClick={handleCheckAllOrUncheckAll}
+              isListDone={isListCompleted}
+            />
           }
         />
         <TodoList

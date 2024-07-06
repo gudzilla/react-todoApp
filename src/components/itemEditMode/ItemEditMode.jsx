@@ -17,6 +17,7 @@ export function ItemEditMode({ value, onChange, onKeyDown, onCancel }) {
         className={styles.itemEditInput}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        onBlur={onCancel}
       />
     </div>
   );

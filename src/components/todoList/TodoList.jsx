@@ -1,7 +1,7 @@
 import styles from "./TodoList.module.css";
 import cx from "classnames";
-import RemoveIcon2 from "../../assets/RemoveIcon2.svg?react";
-import { useState, useEffect } from "react";
+import RemoveIcon from "../../assets/icons/RemoveIcon.svg?react";
+import { useState, useRef, useEffect } from "react";
 import { ItemEditMode } from "../itemEditMode";
 
 export function TodoList({ list, onToggle, onRemove, onNameChange }) {
@@ -44,9 +44,10 @@ export function TodoList({ list, onToggle, onRemove, onNameChange }) {
         return (
           <li key={item.id} className={styles.item}>
             <div
-              className={cx(styles.itemView, {
-                [styles.visualyHidden]: item.id === editModeId,
-              })}
+              className={cx(
+                { [styles.done]: item.isDone },
+                { [styles.hidden]: item.id === editModeId }
+              )}
               onDoubleClick={() => {
                 setEditModeId(item.id);
               }}
@@ -59,24 +60,18 @@ export function TodoList({ list, onToggle, onRemove, onNameChange }) {
                   onToggle(item.id);
                 }}
               />
-              <label
-                className={cx(styles.todoName, {
-                  [styles.done]: item.isDone,
-                })}
-              >
-                {item.name}
-              </label>
+              <label className={styles.todoName}>{item.name}</label>
               <button
                 className={styles.removeButton}
                 onClick={() => {
                   onRemove(item.id);
                 }}
               >
-                <RemoveIcon2 className={styles.removeIcon} />
+                <RemoveIcon className={styles.removeIcon} />
               </button>
             </div>
 
-            {/* EDIT MODE FOR ITEM */}
+            {/* EDIT MODE FOR TODO ITEM */}
             {item.id === editModeId && (
               <ItemEditMode
                 value={newTodoName}
