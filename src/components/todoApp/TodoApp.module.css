@@ -8,10 +8,9 @@
 
 .todoHeader {
   color: #b83f45;
-  font-size: 78px;
+  font-size: 4.875rem;
   font-weight: 300;
   padding: 12px 0;
-  align-self: center;
 }
 
 .todo {
