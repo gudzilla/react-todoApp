@@ -1,28 +1,32 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import styles from "./TodoApp.module.css";
+import cx from "classnames";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import { AddTodoForm } from "../addTodoForm";
 import { TodoList } from "../todoList";
 import { TodoFooter } from "../todoFooter";
 import { TODOLIST_DATA } from "../../constants/data";
+import { FILTERS, FILTERS_PREDICATE } from "../../constants/filters";
+import { CompleteAllButton } from "../completeAllButton";
 
 export function TodoApp() {
   const [todoList, setTodoList] = useState(TODOLIST_DATA);
-  const [todoListFilter, setTodoListFilter] = useState("all");
-  const undoneItemsCount = todoList.filter((item) => !item.isDone).length;
+  const [todoListFilter, setTodoListFilter] = useState(FILTERS.all);
+  const undoneItemsCount = todoList.filter(FILTERS_PREDICATE[FILTERS.active]).length;
   const hasItems = todoList.length > 0;
-  const isListCompleted = todoList.every((item) => item.isDone);
+  const isListCompleted = todoList.every(FILTERS_PREDICATE[FILTERS.completed]);
+
+  let renderList = todoList.filter(FILTERS_PREDICATE[todoListFilter]);
 
   function handleCheckItem(id) {
     const newList = todoList.map((item) => {
       if (item.id !== id) {
         return item;
-      } else {
-        return {
-          ...item,
-          isDone: !item.isDone,
-        };
       }
+      return {
+        ...item,
+        isDone: !item.isDone,
+      };
     });
 
     setTodoList(newList);
@@ -79,15 +83,15 @@ export function TodoApp() {
       <div className={styles.todoList}>
         <AddTodoForm
           onSubmit={handleAddNewTodo}
-          onAllDoneOrUndone={handleCheckAllOrUncheckAll}
-          isListDone={isListCompleted}
           hasItems={hasItems}
+          completeButtonNode={
+            <CompleteAllButton onClick={handleCheckAllOrUncheckAll} isListDone={isListCompleted} />
+          }
         />
         <TodoList
-          todoList={todoList}
+          list={renderList}
           onToggle={handleCheckItem}
           onRemove={handleRemoveItem}
-          todoListFilter={todoListFilter}
           onNameChange={handleItemNameChange}
         />
         {hasItems && (
