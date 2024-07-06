@@ -7,3 +7,9 @@ export const FILTERS = {
   active: filterActive,
   completed: filterCompleted,
 };
+
+export const FILTERS_PREDICATE = {
+  [FILTERS.all]: filterAll,
+  [FILTERS.active]: filterActive,
+  [FILTERS.completed]: filterCompleted,
+};

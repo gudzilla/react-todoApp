@@ -7,14 +7,11 @@ export function ItemEditMode({ value, onChange, onKeyDown, onCancel }) {
 
   useClickOutside(inputRef, onCancel);
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
   return (
     <div className={styles.itemEdit}>
       <input
         ref={inputRef}
+        autoFocus={true}
         type="text"
         value={value}
         className={styles.itemEditInput}
