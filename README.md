@@ -1,5 +1,7 @@
 # Todo App 1.0 (React)
 
+[-> Link to Check out deployed Project <-](https://react-todo-app-nine-ashy.vercel.app/)
+
 This is minimalist and appealing todo web application that can help track tasks that needs to be done (aka **todos**).
 
 Users have the ability to add, edit and remove their todos. Mark them as done. Filter them to see all, active or completed todos. And also remove all completed todos in one click.
