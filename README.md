@@ -1,4 +1,4 @@
-# Todo App 1.0 (React)
+# Todo App (React)
 
 [-> Link to Check out deployed Project <-](https://react-todo-app-nine-ashy.vercel.app/)
 
