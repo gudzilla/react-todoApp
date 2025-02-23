@@ -1,6 +1,6 @@
 # Todo App (React)
 
-[-> Link to Check out deployed Project <-](https://react-todo-app-nine-ashy.vercel.app/)
+[LIVE DEMO LINK](https://react-todos-js.netlify.app/)
 
 This is minimalist and appealing todo web application that can help track tasks that needs to be done (aka **todos**).
 
