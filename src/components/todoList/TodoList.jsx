@@ -1,12 +1,12 @@
-import styles from "./TodoList.module.css";
-import cx from "classnames";
-import RemoveIcon from "../../assets/icons/RemoveIcon.svg?react";
-import { useState, useRef, useEffect } from "react";
-import { ItemEditMode } from "../itemEditMode";
+import styles from './TodoList.module.css';
+import cx from 'classnames';
+import RemoveIcon from '../../assets/icons/RemoveIcon.svg?react';
+import { useState, useEffect } from 'react';
+import { ItemEditMode } from '../itemEditMode';
 
 export function TodoList({ list, onToggle, onRemove, onNameChange }) {
   const [editModeId, setEditModeId] = useState(null);
-  const [newTodoName, setNewTodoName] = useState("");
+  const [newTodoName, setNewTodoName] = useState('');
 
   function handleTodoNameChange({ target: { value } }) {
     setNewTodoName(value);
@@ -22,9 +22,9 @@ export function TodoList({ list, onToggle, onRemove, onNameChange }) {
   }
 
   function handleKeyDown({ target: { value }, key, keyCode }) {
-    if ((key === "Enter" || keyCode === 13) && value.trim().length > 1) {
+    if ((key === 'Enter' || keyCode === 13) && value.trim().length > 1) {
       handleAcceptEditChanges(editModeId, value.trim());
-    } else if (key === "Escape" || keyCode === 27) {
+    } else if (key === 'Escape' || keyCode === 27) {
       handleCancelEditChanges();
     }
   }
@@ -34,7 +34,7 @@ export function TodoList({ list, onToggle, onRemove, onNameChange }) {
       const editItemName = list.find((item) => item.id === editModeId).name;
       setNewTodoName(editItemName);
     } else {
-      setNewTodoName("");
+      setNewTodoName('');
     }
   }, [editModeId]);
 
@@ -53,7 +53,7 @@ export function TodoList({ list, onToggle, onRemove, onNameChange }) {
               }}
             >
               <input
-                type="checkbox"
+                type='checkbox'
                 className={styles.itemCheckbox}
                 checked={item.isDone}
                 onChange={() => {
